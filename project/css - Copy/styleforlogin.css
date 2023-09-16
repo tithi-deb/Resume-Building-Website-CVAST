@@ -1,0 +1,135 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-primary: #4a42f1;
+    --color-green: #4ae347;
+    --color-secondary: #d930ba;
+    --color-success: #81d1b0;
+    --color-warning: #dec84b;
+    --color-danger:  #f04a30;
+    --color-danger-variant: rgba(247,88,66,0.4);
+    --color-white: #fff;
+    --color-light: rgba(255,255,255,0.7);
+    --color-black: #000;
+    --color-bg: #347483;
+    --color-bg1: #ce6857;
+    --color-bg2: #424890;
+    
+    --container-width-lg: 80%;
+    --container-width-md: 90%;
+    --container-width-sm: 94%;
+    
+    --transition: all 400ms ease;
+    }
+    /*-----------------------SIGN IN------------------*/
+    .container_log{
+        position: relative;
+        margin-top: 28rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 28rem;
+    }
+
+.signin, .signup {
+    color: #fff;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: rgba(48, 30, 30, 0.1);
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(30px);
+    animation: animateForm 1s ease forwards;
+}
+.container_log h1{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.social{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.social a{
+    border: 1px solid rgba(255,255,255,0.5);
+    width: 3rem;
+    height: 3rem;
+    color: white;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+.social a:hover{
+    background: #fff;
+    color: #000;
+}
+p{
+    text-align: center;
+    margin: 1rem 0;
+}
+.container_log form input{
+    display: block;
+    width:100%;
+    border:none;
+    outline: none;
+    padding: 1.2rem;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+.container_log form input::placeholder{
+    color: #fff;
+}
+.container_log form input[type="submit"]{
+    background: #4a42f1;
+    transition: var(--transition);
+    cursor: pointer;
+}
+.container_log form input[type="submit"]:hover{
+    opacity: 0.8;
+}
+.container_log form small{
+    display: block;
+    margin-top: 1rem;
+}
+.container_log form small label{
+    color: yellow;
+    cursor: pointer;
+}
+/*-----------------------SIGN UP------------------*/
+.signup{
+    display: none;
+}
+#toggle:checked ~ .signin{
+    display: none;
+}
+#toggle:checked ~ .signup{
+    display: block;
+}
+@keyframes animateForm{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+#toggle{
+    appearance: none;
+}

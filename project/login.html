@@ -68,8 +68,8 @@
         <p>Or Enter Your Details</p>
         <input type="text" placeholder="Name" id="name">
         <input type="email" placeholder="Email" id="email">
-        <input type="password" placeholder="Password" id="password">
-        <input type="password" placeholder="Confirm Password" id="confirm">
+        <input type="password" name="password" placeholder="Password">
+<input type="password" name="confirm-password" placeholder="Confirm Password">
         <input type="submit" value="Create Account" onclick="saveDetails()"> 
         <small>Already have an account? <label for="toggle">Sign In</label></small>
       </form>
@@ -131,6 +131,73 @@
     </footer>
     <!--END OF FOOTER-->
         </section>
+        <!--SIGN IN SIGN UP FORM VALIDATION-->
+    <script>
+        // Function to validate the login form
+        function validateLoginForm() {
+            const emailInput = document.querySelector('.signin input[type="email"]');
+            const passwordInput = document.querySelector('.signin input[type="password"]');
+            
+            // Check if the email and password fields are empty
+            if (emailInput.value.trim() === '') {
+                alert('Please enter your email.');
+                emailInput.focus();
+                return false;
+            }
+            
+            if (passwordInput.value.trim() === '') {
+                alert('Please enter your password.');
+                passwordInput.focus();
+                return false;
+            }
+            
+            return true; // Form is valid
+        }
+
+        // Function to validate the sign-up form
+        function validateSignUpForm() {
+            const nameInput = document.querySelector('.signup input[type="text"]');
+            const emailInput = document.querySelector('.signup input[type="email"]');
+            const passwordInput = document.querySelector('.signup input[name="password"]'); // Select by name
+            const confirmPasswordInput = document.querySelector('.signup input[name="confirm-password"]'); // Select by name
+
+            // Check if any field is empty
+            if (nameInput.value.trim() === '' || emailInput.value.trim() === '' || passwordInput.value.trim() === '' || confirmPasswordInput.value.trim() === '') {
+                alert('Please fill in all the fields.');
+                return false;
+            }
+
+            // Check if passwords match
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                alert('Passwords do not match.');
+                passwordInput.value = ''; // Clear the password fields
+                confirmPasswordInput.value = '';
+                passwordInput.focus();
+                return false;
+            }
+
+            // Display the entered details (you can modify this part as needed)
+            alert('Name: ' + nameInput.value + '\nEmail: ' + emailInput.value);
+
+            return true; // Form is valid
+        }
+
+        // Attach form validation functions to form submissions
+        const loginForm = document.querySelector('.signin form');
+        const signUpForm = document.querySelector('.signup form');
+        
+        loginForm.addEventListener('submit', function (e) {
+            if (!validateLoginForm()) {
+                e.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+
+        signUpForm.addEventListener('submit', function (e) {
+            if (!validateSignUpForm()) {
+                e.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+    </script>
         <script src="/javascript/main.js"></script>
     </body>
     </html>
